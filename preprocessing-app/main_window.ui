@@ -1,0 +1,1182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DataPrep</class>
+ <widget class="QMainWindow" name="DataPrep">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="browseFiles">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>100</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Browse local CSV files</string>
+    </property>
+    <property name="toolTipDuration">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>Browse</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="rawFilePath">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>10</y>
+      <width>670</width>
+      <height>30</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTableView" name="csvFilePreview">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>780</width>
+      <height>240</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="saveButton">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>760</y>
+      <width>100</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Save to a local file</string>
+    </property>
+    <property name="text">
+     <string>Save</string>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="navigationBar">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>300</y>
+      <width>780</width>
+      <height>450</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string/>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="settings">
+     <attribute name="title">
+      <string>Settings</string>
+     </attribute>
+     <widget class="QFrame" name="settingsSectionDivider">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>10</y>
+        <width>20</width>
+        <height>400</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::VLine</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QFrame" name="settingsTooltipDivider">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>200</y>
+        <width>365</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::HLine</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="chooseNCDColumnsLabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>290</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Choose numerical/categorical/date-time columns:</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="settingsColumnList">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>370</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="selectAsCategoricalButton">
+      <property name="geometry">
+       <rect>
+        <x>105</x>
+        <y>250</y>
+        <width>85</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Categorical</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="selectAsNumericalButton">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>250</y>
+        <width>85</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Numerical</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="selectAsDatetimeButton">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>250</y>
+        <width>85</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Date-time</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="testSizeLabel">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>10</y>
+        <width>60</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Test size:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="randomStateLabel">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>50</y>
+        <width>120</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Random state value:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="testSizeValueEdit">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>10</y>
+        <width>50</width>
+        <height>30</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="randomStateValueEdit">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>50</y>
+        <width>50</width>
+        <height>30</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="selectTargetColumnButton">
+      <property name="geometry">
+       <rect>
+        <x>295</x>
+        <y>250</y>
+        <width>85</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Target</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="handleMissingValues">
+     <attribute name="title">
+      <string>Handle missing values</string>
+     </attribute>
+     <widget class="QFrame" name="handleMissingValuesSectionDivider">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>10</y>
+        <width>20</width>
+        <height>400</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::VLine</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="handleMissingValuesColumnList">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>370</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="missingCountLabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>220</y>
+        <width>370</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="strategyDropdown">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>260</y>
+        <width>180</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Fill with mean</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Fill with median</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Fill with mode</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Fill with specific value</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Drop rows</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLineEdit" name="specificValueEdit">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>260</y>
+        <width>180</width>
+        <height>30</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="handleMissingValuesApplyButton">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>380</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+     <widget class="QFrame" name="handleMissingValuesTooltipDivider">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>200</y>
+        <width>365</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::HLine</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="handleMissingValuesExplanationLabel">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>10</y>
+        <width>365</width>
+        <height>190</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;What it is:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Handling missing values involves identifying and addressing gaps in your dataset where data is missing. &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Why it's necessary:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Missing values can lead to inaccurate predictions or models that fail to generalize well. Techniques like imputation (filling in missing values) or removing incomplete records ensure the dataset is complete and reliable for model training.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::RichText</enum>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="engineerFeatures">
+     <attribute name="title">
+      <string>Engineer features</string>
+     </attribute>
+     <widget class="QFrame" name="engineerFeaturesSectionDivider">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>10</y>
+        <width>20</width>
+        <height>400</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::VLine</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="engineerFeaturesDropdown">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>180</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Polynomial features</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Date-time feature extraction</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Lag features</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Rolling statistics</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Cumulative statistics</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QStackedWidget" name="optionsStackedWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>370</width>
+        <height>320</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="polynomialDegree">
+       <widget class="QComboBox" name="degreeDropdown">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>180</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Polynomial degree - 1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Polynomial degree - 2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Polynomial degree - 3</string>
+         </property>
+        </item>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="dateTimeExtraction">
+       <widget class="QCheckBox" name="extractYearFromDatetime">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>370</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Extract year from date-time</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="extractMonthFromDatetime">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>370</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Extract month from date-time</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="extractDayFromDatetime">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>60</y>
+          <width>370</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Extract day from date-time</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="extractDOWFromDatetime">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>90</y>
+          <width>370</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Extract day of the week from date-time</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="lagFeatures">
+       <widget class="QListWidget" name="lagFeaturesEngineerFeaturesColumnList">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>370</width>
+          <height>200</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="chooseLagSpaceLabel">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>210</y>
+          <width>250</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Choose lag space fot the specified column:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lagSpaceValueEdit">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>210</y>
+          <width>120</width>
+          <height>30</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="rollingStatistics">
+       <widget class="QListWidget" name="rollingStatisticsEngineerFeaturesColumnList">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>370</width>
+          <height>200</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="rollingOptionDropdown">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>210</y>
+          <width>180</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Rolling sum</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Rolling mean</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Rolling standard deviation</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Rolling mininum</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Rolling maximum</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="rollingStatisticsWindowLabel">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>210</y>
+          <width>55</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Window:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="rollingWindowValueEdit">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>210</y>
+          <width>120</width>
+          <height>30</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="cumulativeStatistics">
+       <widget class="QListWidget" name="cumulativeStatisticsEngineerFeaturesColumnList">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>370</width>
+          <height>200</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cumulativeOptionDropdown">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>210</y>
+          <width>180</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Cumulative sum</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Cumulative mean</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Cumulative minimum</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Cumulative maximum</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Cumulative product</string>
+         </property>
+        </item>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="engineerFeaturesApplyButton">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>380</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+     <widget class="QFrame" name="engineerFeaturesTooltipDivider">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>200</y>
+        <width>365</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::HLine</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="engineerFeaturesExplanationLabel">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>10</y>
+        <width>365</width>
+        <height>190</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;What it is:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Feature engineering is the process of creating new features or modifying existing ones to improve the performance of a machine learning model.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Why it's necessary:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Well-designed features can provide more relevant information to the model, enhancing its ability to learn patterns and make accurate predictions. This step transforms raw data into meaningful inputs.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="scale">
+     <attribute name="title">
+      <string>Scale</string>
+     </attribute>
+     <widget class="QFrame" name="scaleSectionDivider">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>10</y>
+        <width>20</width>
+        <height>400</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::VLine</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="numericalFeatureScalingOptionDropdown">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>150</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Normalization</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Standardization</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Robust scaling</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>MaxAbs scaling</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QCheckBox" name="applyCategoricalEncodingCheckbox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>220</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Apply categorical feature encoding</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="applyScalingButton">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>380</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="applyNumericalScalingCheckbox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>220</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Apply numerical feature scaling</string>
+      </property>
+     </widget>
+     <widget class="QFrame" name="scaleTooltipDivider">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>200</y>
+        <width>365</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::HLine</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="scaleExplanationLabel">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>10</y>
+        <width>365</width>
+        <height>190</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;What it is:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Scaling adjusts the range of features so they fit within a similar scale, typically through normalization or standardization.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Why it's necessary:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Many machine learning algorithms perform better when input features are on a similar scale. This prevents certain features from dominating others and helps algorithms converge faster and more reliably.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="selectFeatures">
+     <attribute name="title">
+      <string>Select features</string>
+     </attribute>
+     <widget class="QFrame" name="selectFeaturesSectionDivider">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>10</y>
+        <width>20</width>
+        <height>400</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::VLine</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QFrame" name="selectFeaturesTooltipDivider">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>200</y>
+        <width>365</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::HLine</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="selectFeaturesExplanationLabel">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>10</y>
+        <width>365</width>
+        <height>190</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;What it is:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Feature selection involves choosing the most relevant features from your dataset for training the model.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Why it's necessary:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Reducing the number of features can improve model performance by eliminating noise, reducing overfitting, and decreasing computation time. It ensures the model trains on the most informative data.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="selectFeaturesColumnList">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>370</width>
+        <height>200</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="selectFeaturesDeleteColumnButton">
+      <property name="geometry">
+       <rect>
+        <x>295</x>
+        <y>220</y>
+        <width>85</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Delete</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="selectFeaturesOptionDropdown">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>220</y>
+        <width>180</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Correlation coefficient</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Chi-square test</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Recursive feature elimination</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Lasso regression</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>260</y>
+        <width>370</width>
+        <height>110</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="correlationCoeficient">
+       <widget class="QLabel" name="correlationCoefficientThresholdLabel">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>65</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Threshold:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="correlationCoefficientThresholdValueEdit">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>0</y>
+          <width>110</width>
+          <height>30</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="chiSquareTest">
+       <widget class="QLabel" name="chiSquareTestFeaturesLabel">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>60</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Features:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="chiSquareTestFeaturesValueEdit">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>0</y>
+          <width>110</width>
+          <height>30</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="recursiveFeatureElimination">
+       <widget class="QComboBox" name="recursiveFeatureEliminationOptionDropdown">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>180</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Linear regression</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Logistic regression</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Random forest</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Support vector classifier</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="recursiveFeatureEliminationFeaturesLabel">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>40</y>
+          <width>60</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Features:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="recursiveFeatureEliminationFeaturesValueEdit">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>40</y>
+          <width>110</width>
+          <height>30</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="lassoRegression">
+       <widget class="QLabel" name="lassoRegressionAlphaLabel">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>41</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Alpha:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lassoRegressionAlphaValueEdit">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>0</y>
+          <width>130</width>
+          <height>30</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="applySelectFeaturesButton">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>380</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="chooseSaveLocation">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>760</y>
+      <width>150</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Choose save location</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="readMeLabel">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>49</y>
+      <width>781</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;font-weight:600;&quot;&gt;Read me! ;)&lt;br/&gt;Welcome to DataPrep.&lt;br/&gt;Important instructions:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;font-weight:600;&quot;&gt;Fill Out Settings Tab First:&lt;/span&gt; Complete the settings tab before any preprocessing steps. This ensures the tool works properly.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;font-weight:600;&quot;&gt;Recommended Order of Steps:&lt;/span&gt; Follow the preprocessing steps in the interface order to maintain data integrity.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;font-weight:600;&quot;&gt;Handle Missing Values First:&lt;/span&gt; Address missing values before other preprocessing steps to avoid inaccuracies.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;font-weight:600;&quot;&gt;Potential Interference:&lt;/span&gt; Some functions may interfere with each other. Follow the recommended order to avoid issues.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;font-weight:600;&quot;&gt;To begin, browse for CSV files.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot;font-weight:600;&quot;&gt;Happy preprocessing!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="errorLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>760</y>
+      <width>510</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
