@@ -184,7 +184,7 @@ class MyApp(QtWidgets.QMainWindow, Ui_DataPrep):
             self.load_csv(file_path)
     
     def load_csv(self, file_path):
-        self.df = pd.read_csv(file_path, dtype=self.get_dtypes(file_path))
+        self.df = pd.read_csv(file_path)
         self.update_table_view()
         self.populate_column_list()
         self.readMeLabel.hide()
